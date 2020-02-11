@@ -6,7 +6,7 @@ body {
     text-align: center;
 }
 .bodyTuto{    
-   height: 200px;
+   height: 230px;
     width: 600px;
     background-color: aqua;
     text-align: center;
@@ -16,4 +16,10 @@ body {
 input{
     margin-top: 10px;
     margin-left: 5px;
+}
+
+button{
+    margin-top: 10px;
+    margin-left: 20px;
+
 }

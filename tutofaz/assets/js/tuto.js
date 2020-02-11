@@ -4,13 +4,12 @@ var newTuto = {
     newRoteiro: "",
     interacao: 0,
 };
+
 function getDados() {
     newTuto.newTitle = document.getElementById("title").value;
     newTuto.newSubtitle = document.getElementById("subtitle").value;
     newTuto.newRoteiro = document.getElementById("roteiro").value;
-    injetarDiv(newTuto.interacao);
-    criaDivs(newTuto.interacao);
-    newTuto.interacao++;
+
 }
 
 function criaDivs(interacao) {
@@ -26,8 +25,30 @@ function criaDivs(interacao) {
 function injetarDiv(interacao) {
     var corpo = document.body;
     var div = document.createElement("div");
+    div.className = "injetada";
     div.id = "novaDiv" + interacao;
     corpo.appendChild(div);
 
+}
+
+function novoPasso() {
+    getDados();
+    injetarDiv(newTuto.interacao);
+    criaDivs(newTuto.interacao);
+    newTuto.interacao++;
+}
+
+function salvaHtml() {
+    if(getPasso(newTuto.interacao)==false)window.alert("Deve haver ao menos 1 passo!" + newTuto.interacao);
+    else{
+       
+    }
+
+}
+
+function getPasso(interacao){
+    if (interacao === 0) {
+        return false;
+    }
 }
 
