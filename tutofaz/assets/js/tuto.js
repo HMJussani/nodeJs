@@ -35,18 +35,20 @@ function novoPasso() {
     getDados();
     injetarDiv(newTuto.interacao);
     criaDivs(newTuto.interacao);
+    salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
     newTuto.interacao++;
 }
 
 function salvaHtml() {
-    if(getPasso(newTuto.interacao)==false)window.alert("Deve haver ao menos 1 passo!" + newTuto.interacao);
-    else{
-       
+    if (getPasso(newTuto.interacao) === false) {
+        window.alert("Deve haver ao menos 1 passo!");
+        return;
     }
 
+   // salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
 }
 
-function getPasso(interacao){
+function getPasso(interacao) {
     if (interacao === 0) {
         return false;
     }
