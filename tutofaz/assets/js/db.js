@@ -30,3 +30,24 @@ function salvarBanco(title, subtitle, roteiro, interacao) {
         roteiro
     });
 }
+function lerBanco(title) {
+    if (dbOK === "down") {
+        return;
+    }
+    var db = firebase.database();
+    var objTitle = db.ref(title);
+    objTitle.on('value', function (snapshot) {
+        var value = snapshot.val();
+        console.log(snapshot.key + " : "+ value[1][0]);/*
+        for(var i = 0; i < value.length(); i++) { 
+            for(var z = 0; z < value[i].length(); z++) { 
+                console.log(snapshot.key + " : "+ value[i][z]);
+            } 
+           
+        } 
+        */
+
+    });
+    
+    
+}

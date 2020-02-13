@@ -39,13 +39,9 @@ function novoPasso() {
     newTuto.interacao++;
 }
 
-function salvaHtml() {
-    if (getPasso(newTuto.interacao) === false) {
-        window.alert("Deve haver ao menos 1 passo!");
-        return;
-    }
-
-   // salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
+function lerHtml() {
+   getDados();
+   lerBanco(newTuto.newTitle);
 }
 
 function getPasso(interacao) {
