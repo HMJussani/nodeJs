@@ -39,9 +39,8 @@ function novoPasso() {
     newTuto.interacao++;
 }
 
-function lerHtml() {
-   getDados();
-   lerBanco(newTuto.newTitle);
+function lerHtml() {  
+   lerBanco(document.getElementById("title").value);
 }
 
 function getPasso(interacao) {

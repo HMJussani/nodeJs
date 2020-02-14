@@ -1,6 +1,4 @@
-/*
-Conexão com banco de dados Firebase
-*/
+
 const firebaseConfig = {
     apiKey: "AIzaSyDSu9mQ77ASPWZg-s0j45mRyiUVjK357J4",
     authDomain: "estudo-d5862.firebaseapp.com",
@@ -23,31 +21,26 @@ function salvarBanco(title, subtitle, roteiro, interacao) {
     if (dbOK === "down") {
         return;
     }
-    var db = firebase.database();
     firebase.database().ref(title + "/" + interacao).set({
-        //title,
+        interacao,
         subtitle,
         roteiro
     });
 }
+
 function lerBanco(title) {
     if (dbOK === "down") {
         return;
     }
     var db = firebase.database();
-    var objTitle = db.ref(title);
-    objTitle.on('value', function (snapshot) {
-        var value = snapshot.val();
-        console.log(snapshot.key + " : "+ value[1][0]);/*
-        for(var i = 0; i < value.length(); i++) { 
-            for(var z = 0; z < value[i].length(); z++) { 
-                console.log(snapshot.key + " : "+ value[i][z]);
-            } 
-           
-        } 
-        */
-
+    var objTitle = db.ref(title);      
+    objTitle.on("child_added", function (snapshot) {
+        var newPost = snapshot.val();
+        console.log("Titulo: " + title);
+        console.log("Subtitulo: " + newPost.subtitle);
+        console.log("Roteiro: " + newPost.roteiro);
+        console.log("Passo: " + newPost.interacao);
+       
     });
-    
-    
+
 }
