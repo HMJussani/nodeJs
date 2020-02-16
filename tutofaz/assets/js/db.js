@@ -10,37 +10,42 @@ const firebaseConfig = {
     measurementId: "G-GKSWD7NJ7T"
 };
 
-let dbOK = "down";
 if (firebase.initializeApp(firebaseConfig)) {
-    dbOK = "up";
-}
 
-console.log("fire base " + dbOK);
-
-function salvarBanco(title, subtitle, roteiro, interacao) {
-    if (dbOK === "down") {
-        return;
-    }
-    firebase.database().ref(title + "/" + interacao).set({
-        interacao,
-        subtitle,
-        roteiro
-    });
-}
-
-function lerBanco(title) {
-    if (dbOK === "down") {
-        return;
-    }
-    var db = firebase.database();
-    var objTitle = db.ref(title);      
-    objTitle.on("child_added", function (snapshot) {
-        var newPost = snapshot.val();
-        console.log("Titulo: " + title);
-        console.log("Subtitulo: " + newPost.subtitle);
-        console.log("Roteiro: " + newPost.roteiro);
-        console.log("Passo: " + newPost.interacao);
-       
+    firebase.database().ref("Tutoriais").on("child_added", function (snapshot) {
+        var corpo = document.body;
+        var div = document.createElement('div');
+        div.className = 'injetada';
+        div.appendChild(document.createTextNode(snapshot.val().title));
+        corpo.appendChild(div);
     });
 
+    function salvarBanco(title, subtitle, roteiro, interacao) {
+
+        firebase.database().ref("Tutoriais/" + title + "/" + interacao).set({
+            interacao,
+            subtitle,
+            roteiro
+        });
+        firebase.database().ref("Tutoriais/" + title + "/").update({
+            title
+        });
+    }
+
+    function lerBanco(title) {
+
+        var corpo = document.body;
+        var db = firebase.database();
+        var objTitle = db.ref("Tutoriais").child(title);
+        objTitle.on("child_added", function (snapshot) {
+            var div = document.createElement('div');
+            div.className = 'injetada';
+            div.appendChild(document.createTextNode(snapshot.val().subtitle));
+            div.appendChild(document.createTextNode(' : '));
+            div.appendChild(document.createTextNode(snapshot.val().roteiro));
+            corpo.appendChild(div);
+
+        });
+
+    }
 }

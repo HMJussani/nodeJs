@@ -20,8 +20,12 @@
         Roteiro:<br />
         <textarea type="text" name="roteiro" id="roteiro" rows="6" cols="50"></textarea>
         <br />
-        <button class="btn" onclick="novoPasso()">Próximo passo</button>
+        <button class="btn" onclick="novoPasso()">Próximo passo</button>       
+    </div>
+    <div class="bancoTuto">
+        Pesquisar: <input type="text" name="salvotitulo" id="salvoTitle" required /><br />
         <button class="btn" onclick="lerHtml()">Ler</button>
+        <ul class="listaTuto" id="listaTuto"></ul>
     </div>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>

@@ -9,6 +9,7 @@ function getDados() {
     newTuto.newTitle = document.getElementById("title").value;
     newTuto.newSubtitle = document.getElementById("subtitle").value;
     newTuto.newRoteiro = document.getElementById("roteiro").value;
+    newTuto.salvoTitle = document.getElementById("salvoTitle").value;
 
 }
 
@@ -34,13 +35,13 @@ function injetarDiv(interacao) {
 function novoPasso() {
     getDados();
     injetarDiv(newTuto.interacao);
-    criaDivs(newTuto.interacao);
+    criaDivs(newTuto.interacao);   
     salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
     newTuto.interacao++;
 }
 
 function lerHtml() {  
-   lerBanco(document.getElementById("title").value);
+   lerBanco(document.getElementById("salvoTitle").value);
 }
 
 function getPasso(interacao) {

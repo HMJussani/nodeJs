@@ -13,6 +13,21 @@ body {
 
 }
 
+.injetada{
+
+    margin-top: 10px;
+
+}
+
+.bancoTuto{
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 600px;
+    background-color: yellowgreen;
+    text-align: center;
+
+}
+
 input{
     margin-top: 10px;
     margin-left: 5px;
@@ -21,5 +36,8 @@ input{
 button{
     margin-top: 10px;
     margin-left: 20px;
+    margin-bottom: 10px;
+    width: 150px;
+    height: 30px;
 
 }
