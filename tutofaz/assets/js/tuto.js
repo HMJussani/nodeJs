@@ -9,8 +9,7 @@ function getDados() {
     newTuto.newTitle = document.getElementById("title").value;
     newTuto.newSubtitle = document.getElementById("subtitle").value;
     newTuto.newRoteiro = document.getElementById("roteiro").value;
-    newTuto.salvoTitle = document.getElementById("salvoTitle").value;
-
+  
 }
 
 function criaDivs(interacao) {
