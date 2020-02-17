@@ -12,11 +12,13 @@ const firebaseConfig = {
 if (firebase.initializeApp(firebaseConfig)) {
 
     firebase.database().ref("Tutoriais").on("child_added", function (snapshot) {
+        var titulo = snapshot.val().title;
+        if (titulo.isNull) return;
         var corpo = document.body;
         var div = document.createElement('div');
         div.className = 'titulos';
         div.id = 'titulos';
-        div.appendChild(document.createTextNode(snapshot.val().title));
+        div.appendChild(document.createTextNode(titulo));
         corpo.appendChild(div);
 
     });
@@ -29,7 +31,7 @@ if (firebase.initializeApp(firebaseConfig)) {
         objTitle.on("child_added", function (snapshot) {
             var subtitulo = snapshot.val().subtitle;
             var roteiro = snapshot.val().roteiro;
-            if((subtitulo.isNull)&&(roteiro.isNull)) return;
+            if ((subtitulo.isNull) && (roteiro.isNull)) return;
             var div = document.createElement('div');
             div.className = 'injetada';
             div.appendChild(document.createTextNode(subtitulo));
