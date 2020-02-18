@@ -24,25 +24,40 @@ if (firebase.initializeApp(firebaseConfig)) {
     });
 
     function lerBanco(title) {
-
-        var corpo = document.body;      
+        var data = [];
         var objTitle = firebase.database().ref(`Tutoriais`).child(title);
-      objTitle.on('child_added', function (snapshot) {
-            var subtitulo = snapshot.val().subtitle;
-            var roteiro = snapshot.val().roteiro;
-            if ((subtitulo.isNull) && (roteiro.isNull)) return;
+        objTitle.on('value', function (snapshot) {
+            var readings = snapshot.val();
+            if (readings) {
+                var currentValue;
+                for (var key in readings) {
+                    currentValue = readings[key]
+                    data.push(currentValue);
+                }
+            }
+        });
+        criarDivs(data);
+    }
+
+    function criarDivs(data) {
+        for (var i = 0; i < data.length - 1; i++) {
+            var corpo = document.body;
             var div = document.createElement('div');
+            if (i === 0) {
+                var divTitle = document.createElement('div');
+                divTitle.className = 'title';
+                divTitle.id = 'title';
+                divTitle.appendChild(document.createTextNode(data[i].title));
+                corpo.appendChild(divTitle);
+            }
             div.className = 'injetada';
-            div.appendChild(document.createTextNode(subtitulo));
-            div.appendChild(document.createTextNode(' : '));
-            div.appendChild(document.createTextNode(roteiro));
+            div.id = 'injetada';
+            div.appendChild(document.createTextNode(data[i].subtitle));
+            div.appendChild(document.createTextNode(":"));
+            div.appendChild(document.createTextNode(data[i].roteiro));
             corpo.appendChild(div);
 
-        });
+        }
     }
-    
-} 
-    
 
-
-
+}
