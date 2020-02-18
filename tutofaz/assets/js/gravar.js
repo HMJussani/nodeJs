@@ -13,12 +13,13 @@ if (firebase.initializeApp(firebaseConfig)) {
 
     function salvarBanco(title, subtitle, roteiro, interacao) {
 
-        firebase.database().ref(`Tutoriais/ ${title} /  ${interacao}`).set({
+        firebase.database().ref("Tutoriais/"+title+"/"+ interacao).set({
             interacao,
             subtitle,
             roteiro
         });
-        firebase.database().ref(`Tutoriais/ ${title}/`).update({
+        
+        firebase.database().ref("Tutoriais/"+title+"/").update({
             title
         });
     }

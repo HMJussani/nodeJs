@@ -11,7 +11,7 @@ const firebaseConfig = {
 
 if (firebase.initializeApp(firebaseConfig)) {
 
-    firebase.database().ref("Tutoriais").on("child_added", function (snapshot) {
+    firebase.database().ref(`Tutoriais`).on(`child_added`, function (snapshot) {
         var titulo = snapshot.val().title;
         if (titulo.isNull) return;
         var corpo = document.body;
@@ -25,10 +25,9 @@ if (firebase.initializeApp(firebaseConfig)) {
 
     function lerBanco(title) {
 
-        var corpo = document.body;
-        var db = firebase.database();
-        var objTitle = db.ref("Tutoriais").child(title);
-        objTitle.on("child_added", function (snapshot) {
+        var corpo = document.body;      
+        var objTitle = firebase.database().ref(`Tutoriais`).child(title);
+      objTitle.on('child_added', function (snapshot) {
             var subtitulo = snapshot.val().subtitle;
             var roteiro = snapshot.val().roteiro;
             if ((subtitulo.isNull) && (roteiro.isNull)) return;
@@ -38,10 +37,12 @@ if (firebase.initializeApp(firebaseConfig)) {
             div.appendChild(document.createTextNode(' : '));
             div.appendChild(document.createTextNode(roteiro));
             corpo.appendChild(div);
+
         });
-
     }
+    
+} 
+    
 
-}
 
 
