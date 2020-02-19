@@ -1,43 +1,41 @@
-body {
-    
-}
+body {}
 
 .title {
     text-align: center;
 }
-.bodyTuto{    
-   height: 230px;
+
+.bodyTuto {
+    height: 230px;
     width: 600px;
     background-color: aqua;
     text-align: center;
-
 }
 
-.injetada{
-
+.injetada {
     margin-top: 10px;
-
 }
 
-.bancoTuto{
+.titulos {
+    margin-top: 10px;
+}
+
+.bancoTuto {
     margin-top: 5px;
     margin-bottom: 10px;
     width: 600px;
     background-color: yellowgreen;
     text-align: center;
-
 }
 
-input{
+input {
     margin-top: 10px;
     margin-left: 5px;
 }
 
-button{
+button {
     margin-top: 10px;
     margin-left: 20px;
     margin-bottom: 10px;
     width: 150px;
     height: 30px;
-
 }

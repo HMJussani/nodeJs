@@ -1,3 +1,14 @@
+const firebaseConfig = {
+    apiKey: "AIzaSyDSu9mQ77ASPWZg-s0j45mRyiUVjK357J4",
+    authDomain: "estudo-d5862.firebaseapp.com",
+    databaseURL: "https://estudo-d5862.firebaseio.com",
+    projectId: "estudo-d5862",
+    storageBucket: "estudo-d5862.appspot.com",
+    messagingSenderId: "4938509167",
+    appId: "1:4938509167:web:3f9780708426e41f07d69a",
+    measurementId: "G-GKSWD7NJ7T"
+};
+
 var newTuto = {
     newTitle: "",
     newSubtitle: "",
@@ -6,10 +17,10 @@ var newTuto = {
 };
 
 function getDados() {
-    newTuto.newTitle = document.getElementById("title").value;
-    newTuto.newSubtitle = document.getElementById("subtitle").value;
-    newTuto.newRoteiro = document.getElementById("roteiro").value;
-  
+    newTuto.newTitle = document.querySelector("#title").value;
+    newTuto.newSubtitle = document.querySelector("#subtitle").value;
+    newTuto.newRoteiro = document.querySelector("#roteiro").value;
+
 }
 
 function criaDivs(interacao) {
@@ -34,13 +45,13 @@ function injetarDiv(interacao) {
 function novoPasso() {
     getDados();
     injetarDiv(newTuto.interacao);
-    criaDivs(newTuto.interacao);   
+    criaDivs(newTuto.interacao);
     salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
     newTuto.interacao++;
 }
 
-function lerHtml() {  
-   lerBanco(document.getElementById("salvoTitle").value);
+function lerHtml() {
+    lerBanco(document.querySelector("#id[salvoTitle]"));
 }
 
 function getPasso(interacao) {
