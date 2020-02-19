@@ -51,7 +51,10 @@ function novoPasso() {
 }
 
 function lerHtml() {
-    lerBanco(document.querySelector("#id[salvoTitle]"));
+    lerBanco(document.querySelector("#salvoTitle").value);
+}
+function apagaHtml() {
+    apagaTuto(document.querySelector("#salvoTitle").value);
 }
 
 function getPasso(interacao) {

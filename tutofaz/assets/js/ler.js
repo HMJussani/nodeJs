@@ -29,25 +29,33 @@ if (firebase.initializeApp(firebaseConfig)) {
         criarDivs(data);
     }
 
-    function criarDivs(data) {
-        for (var i = 0; i < data.length - 1; i++) {
-            var corpo = document.body;
-            var div = document.createElement('div');
-            if (i === 0) {
-                var divTitle = document.createElement('div');
-                divTitle.className = 'title';
-                divTitle.id = 'title';
-                divTitle.appendChild(document.createTextNode(data[i].title));
-                corpo.appendChild(divTitle);
-            }
-            div.className = 'injetada';
-            div.id = 'injetada';
-            div.appendChild(document.createTextNode(data[i].subtitle));
-            div.appendChild(document.createTextNode(":"));
-            div.appendChild(document.createTextNode(data[i].roteiro));
-            corpo.appendChild(div);
-
-        }
+    function apagaTuto(title) {
+        var aRemover = firebase.database().ref(`Tutoriais/${title}/`);
+        aRemover.remove(function (error) {
+            alert("Removido");
+            window.location.reload();
+        });
     }
 
+}
+
+function criarDivs(data) {
+    for (var i = 0; i < data.length - 1; i++) {
+        var corpo = document.body;
+        var div = document.createElement('div');
+        if (i === 0) {
+            var divTitle = document.createElement('div');
+            divTitle.className = 'title';
+            divTitle.id = 'title';
+            divTitle.appendChild(document.createTextNode(data[i].title));
+            corpo.appendChild(divTitle);
+        }
+        div.className = 'injetada';
+        div.id = 'injetada';
+        div.appendChild(document.createTextNode(data[i].subtitle));
+        div.appendChild(document.createTextNode(":"));
+        div.appendChild(document.createTextNode(data[i].roteiro));
+        corpo.appendChild(div);
+
+    }
 }
