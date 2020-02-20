@@ -13,7 +13,6 @@ if (firebase.initializeApp(firebaseConfig)) {
             criarLinks(data);
         }
 
-
     });
 
     function lerBanco(title) {
@@ -35,7 +34,7 @@ if (firebase.initializeApp(firebaseConfig)) {
     }
 
     function apagaTuto(title) {
-        var existe = dbExiste(title)
+        var existe = dbExiste(title);
         if (existe) {
             var aRemover = firebase.database().ref(`Tutoriais/${title}/`);
             aRemover.remove(function (error) {
@@ -56,7 +55,7 @@ if (firebase.initializeApp(firebaseConfig)) {
         });
         return existe;
     }
-
+    
 }
 
 function criarDivs(data) {
@@ -76,8 +75,8 @@ function criarDivs(data) {
         div.appendChild(document.createTextNode(":"));
         div.appendChild(document.createTextNode(data[i].roteiro));
         corpo.appendChild(div);
-
     }
+
 }
 
 function criarLinks(data) {

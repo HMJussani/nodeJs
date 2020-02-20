@@ -46,15 +46,21 @@ function novoPasso() {
     getDados();
     injetarDiv(newTuto.interacao);
     criaDivs(newTuto.interacao);
-    salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
+    salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);  
+   // lerBanco(newTuto.newTitle); 
     newTuto.interacao++;
 }
 
 function lerHtml() {
     lerBanco(document.querySelector("#salvoTitle").value);
 }
+
 function apagaHtml() {
     apagaTuto(document.querySelector("#salvoTitle").value);
+}
+
+function editaHtml() {
+   
 }
 
 function getPasso(interacao) {
