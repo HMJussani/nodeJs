@@ -1,17 +1,25 @@
 
 if (firebase.initializeApp(firebaseConfig)) {
 
-    firebase.database().ref(`Tutoriais`).on(`child_added`, function (snapshot) {
-        var titulo = snapshot.val().title;
-        if (titulo.isNull) return;
-        var corpo = document.body;
-        var div = document.createElement('div');
-        div.className = 'titulos';
-        div.id = 'titulos';
-        div.appendChild(document.createTextNode(titulo));
-        corpo.appendChild(div);
+    firebase.database().ref(`Tutoriais`).on(`value`, function (snapshot) {
+        var data = [];
+        var readings = snapshot.val();
+        if (readings) {
+            var currentValue;
+            for (var key in readings) {
+                currentValue = readings[key]
+                data.push(currentValue);
+            }
+            criarLinks(data);
+        }
+
 
     });
+
+    function link(title) {
+        var title = document.querySelector("a[id]").textContent;
+        lerBanco(title);
+    }
 
     function lerBanco(title) {
         var existe = dbExiste(title)
@@ -75,5 +83,20 @@ function criarDivs(data) {
         corpo.appendChild(div);
 
     }
+}
+
+function criarLinks(data) {
+    for (var i = 0; i < data.length; i++) {
+        var a = document.createElement('a');
+        var div = document.createElement('div');
+        a.className = 'titulos';
+        div.className = 'link';
+        a.id = data[i].title;
+        a.setAttribute('href', 'javascript:link()');
+        a.appendChild(document.createTextNode(data[i].title));
+        div.appendChild(a);
+        document.body.appendChild(div);
+    }
+
 }
 
