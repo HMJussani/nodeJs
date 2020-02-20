@@ -16,11 +16,6 @@ if (firebase.initializeApp(firebaseConfig)) {
 
     });
 
-    function link(title) {
-        var title = document.querySelector("a[id]").textContent;
-        lerBanco(title);
-    }
-
     function lerBanco(title) {
         var existe = dbExiste(title)
         if (existe) {
@@ -92,7 +87,7 @@ function criarLinks(data) {
         a.className = 'titulos';
         div.className = 'link';
         a.id = data[i].title;
-        a.setAttribute('href', 'javascript:link()');
+        a.setAttribute('href', `javascript:lerBanco("${data[i].title}")`);
         a.appendChild(document.createTextNode(data[i].title));
         div.appendChild(a);
         document.body.appendChild(div);
