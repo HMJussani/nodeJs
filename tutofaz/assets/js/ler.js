@@ -31,6 +31,10 @@ if (firebase.initializeApp(firebaseConfig)) {
             });
             criarDivs(data);
         }
+        if (false === existe) {
+            alert(`${title} não existe no banco de dados.`);
+        }
+
     }
 
     function apagaTuto(title) {
@@ -71,6 +75,8 @@ function criarDivs(data) {
         }
         div.className = 'injetada';
         div.id = 'injetada';
+        div.appendChild(document.createTextNode(data[i].interacao));
+        div.appendChild(document.createTextNode("-"));
         div.appendChild(document.createTextNode(data[i].subtitle));
         div.appendChild(document.createTextNode(":"));
         div.appendChild(document.createTextNode(data[i].roteiro));

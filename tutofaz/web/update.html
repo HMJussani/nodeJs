@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="imagem/png" href="../assets/img/edit.png" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <title>Faz Tuto</title>
+
+</head>
+
+<body>
+    <div class="title">
+        <h1>Editando um Tutorial</h1>
+        <a href="index.html">Voltar</a>
+    </div>
+    <div class="bodyTuto">
+        Título: <input type="text" name="titulo" id="title" required /><br />
+        Interação: <input type="number" name="interacao" id="interacao"/><br/>
+        Sub-título: <input type="text" name="subtitulo" id="subtitle" required /><br />
+        Roteiro:<br />
+        <textarea type="text" name="roteiro" id="roteiro" rows="6" cols="50"></textarea>
+        <br />
+        <button class="btn" onclick="updateHtml()">Alterar</button>
+    </div>   
+
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="../assets/js/tuto.js"></script>
+    <script src="../assets/js/init.js"></script>
+</body>
+
+</html>

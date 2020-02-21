@@ -13,13 +13,20 @@ var newTuto = {
     newTitle: "",
     newSubtitle: "",
     newRoteiro: "",
-    interacao: 0,
+    interacao: 1,
 };
 
 function getDados() {
     newTuto.newTitle = document.querySelector("#title").value;
     newTuto.newSubtitle = document.querySelector("#subtitle").value;
     newTuto.newRoteiro = document.querySelector("#roteiro").value;
+
+}
+function getDadosUp() {
+    newTuto.newTitle = document.querySelector("#title").value;
+    newTuto.newSubtitle = document.querySelector("#subtitle").value;
+    newTuto.newRoteiro = document.querySelector("#roteiro").value;
+    newTuto.interacao = document.querySelector("#interacao").value;
 
 }
 
@@ -46,8 +53,8 @@ function novoPasso() {
     getDados();
     injetarDiv(newTuto.interacao);
     criaDivs(newTuto.interacao);
-    salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);  
-   // lerBanco(newTuto.newTitle); 
+    salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
+    // lerBanco(newTuto.newTitle); 
     newTuto.interacao++;
 }
 
@@ -59,8 +66,12 @@ function apagaHtml() {
     apagaTuto(document.querySelector("#salvoTitle").value);
 }
 
-function editaHtml() {
-   
+function editaHtml() {    
+    window.location.replace("update.html");
+}
+function updateHtml() {   
+    getDadosUp();
+    updateTuto(newTuto.newTitle, newTuto.newSubtitle,newTuto.newRoteiro, newTuto.interacao);
 }
 
 function getPasso(interacao) {

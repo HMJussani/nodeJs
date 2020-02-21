@@ -13,7 +13,7 @@ if (firebase.initializeApp(firebaseConfig)) {
             });
 
     }
-
+   
     function dbExiste(title) {
         var existe;
         firebase.database().ref(`Tutoriais`).child(title).on('value', function (snapshot) {
