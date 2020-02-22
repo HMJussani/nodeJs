@@ -30,6 +30,7 @@ if (firebase.initializeApp(firebaseConfig)) {
                 }
             });
             criarDivs(data);
+            document.querySelector("#salvoTitle").value = data[1].title;
         }
         if (false === existe) {
             alert(`${title} não existe no banco de dados.`);
@@ -59,7 +60,7 @@ if (firebase.initializeApp(firebaseConfig)) {
         });
         return existe;
     }
-    
+
 }
 
 function criarDivs(data) {
@@ -92,11 +93,12 @@ function criarLinks(data) {
         a.className = 'titulos';
         div.className = 'link';
         a.id = data[i].title;
-        a.setAttribute('href', `javascript:lerBanco("${data[i].title}")`);
+        a.setAttribute('href', `javascript:lerBanco("${data[i].title}")`);        
         a.appendChild(document.createTextNode(data[i].title));
         div.appendChild(a);
         document.body.appendChild(div);
     }
 
 }
+
 

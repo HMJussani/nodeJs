@@ -69,9 +69,15 @@ function apagaHtml() {
 function editaHtml() {    
     window.location.replace("update.html");
 }
+
 function updateHtml() {   
     getDadosUp();
     updateTuto(newTuto.newTitle, newTuto.newSubtitle,newTuto.newRoteiro, newTuto.interacao);
+}
+
+function removeHtml() {   
+    getDadosUp();
+    removeEtapa(newTuto.newSubtitle,newTuto.newRoteiro, newTuto.interacao);
 }
 
 function getPasso(interacao) {

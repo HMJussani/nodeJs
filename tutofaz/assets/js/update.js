@@ -1,4 +1,5 @@
 if (firebase.initializeApp(firebaseConfig)) {
+
     firebase.database().ref(`Tutoriais`).on(`value`, function (snapshot) {
         var data = [];
         var readings = snapshot.val();
@@ -16,11 +17,11 @@ if (firebase.initializeApp(firebaseConfig)) {
 
     function updateTuto(title, subtitle, roteiro, interacao) {
         firebase.database().ref(`Tutoriais/${title}/${interacao}`).set({
-            title,
             interacao,
             subtitle,
             roteiro
         });
+        window.location.reload();
     }
 
     function lerBanco(title) {
@@ -36,6 +37,18 @@ if (firebase.initializeApp(firebaseConfig)) {
             }
         });
         criarDivs(data);
+        setDadosUp(data);
+        $('#interacao').bind('click keyup', function () {
+            getSubTitle($('#interacao').val(), data);
+        });
+    }
+
+    function removeEtapa(subtitle,roteiro, interacao){
+        var aRemover = firebase.database().ref(`Tutoriais/${title}/`);
+    aRemover.remove(function (error) {
+        alert(`${title} removido do banco de dados.`);
+        window.location.reload();
+    });
     }
 
 }
@@ -54,6 +67,19 @@ function criarLinks(data) {
     }
 
 }
+
+function setDadosUp(data) {
+    document.querySelector("#title").value = data[1].title;
+    document.querySelector("#interacao").value = 1;
+    document.querySelector("#subtitle").value = data[1].subtitle;
+    document.querySelector("#roteiro").value = data[1].roteiro;
+}
+
+function getSubTitle(indice, data) {    
+    document.querySelector("#subtitle").value = data[indice].subtitle;
+    document.querySelector("#roteiro").value = data[indice].roteiro;
+}
+
 
 function criarDivs(data) {
     for (var i = 0; i < data.length - 1; i++) {
