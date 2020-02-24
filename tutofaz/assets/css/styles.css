@@ -5,8 +5,8 @@ body {}
 }
 
 .bodyTuto {
-    height: 260px;
-    width: 600px;
+    height: 300px;
+    width: 650px;
     background-color: aqua;
     text-align: center;
 }
@@ -27,7 +27,8 @@ body {}
 .bancoTuto {
     margin-top: 5px;
     margin-bottom: 10px;
-    width: 600px;
+    width: 650px;
+    height: 150px;
     background-color: yellowgreen;
     text-align: center;
 }

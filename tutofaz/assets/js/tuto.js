@@ -61,6 +61,9 @@ function novoPasso() {
 function lerHtml() {
     lerBanco(document.querySelector("#salvoTitle").value);
 }
+function novoHtml() {
+    window.location.replace("novo.html");
+}
 
 function apagaHtml() {
     apagaTuto(document.querySelector("#salvoTitle").value);

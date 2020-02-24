@@ -5,32 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="imagem/png" href="../assets/img/edit.png" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/materialize.min.css" media="screen,projection" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Faz Tuto</title>
 
 </head>
 
 <body>
-    <div class="title">
-        <h1>Vamos fazer um tutorial?</h1>
-    </div>
-    <div class="link">
-        <a href="novo.html">Vamos criar um novo tutorial?</a>
-
-    </div>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">Criar Tuto`s</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="novo.html">Novo</a></li>               
+            </ul>
+        </div>
+    </nav>
 
     <div class="bancoTuto">
-        Pesquisar: <input type="text" name="salvotitulo" id="salvoTitle" required /><br />
-        <button class="btn" onclick="lerHtml()">Ler</button>
-        <button class="btn" onclick="apagaHtml()">Apagar</button>
-        <button class="btn" onclick="editaHtml()">Editar</button>
+
+        <div class="row">
+            <div class="input-field col s12">
+                <input placeholder="Pesquisar" id="salvoTitle" type="text" class="validate">               
+            </div>
+            <div class="input-field col s4">
+                <button class="btn" onclick="lerHtml()">Ler</button>
+            </div>
+            <div class="input-field col s4">
+                <button class="btn" onclick="apagaHtml()">Apagar</button>
+            </div>
+            <div class="input-field col s4">
+                <button class="btn" onclick="editaHtml()">Editar</button>
+            </div>
+        </div>
+
         <ul class="listaTuto" id="listaTuto"></ul>
     </div>
+    <script type="text/javascript" src="../assets/js/materialize.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="../assets/js/tuto.js"></script>
     <script src="../assets/js/ler.js"></script>
-    
+
 </body>
 
 </html>
