@@ -58,7 +58,7 @@ function criarLinks(data) {
         var a = document.createElement('a');
         var div = document.createElement('div');
         a.className = 'titulos';
-        div.className = 'link';
+        div.className = 'row';
         a.id = data[i].title;
         a.setAttribute('href', `javascript:lerBanco("${data[i].title}")`);
         a.appendChild(document.createTextNode(data[i].title));
@@ -87,7 +87,7 @@ function criarDivs(data) {
         var div = document.createElement('div');
         if (i === 0) {
             var divTitle = document.createElement('div');
-            divTitle.className = 'title';
+            divTitle.className = 'injetada';
             divTitle.id = 'title';
             divTitle.appendChild(document.createTextNode(data[i].title));
             corpo.appendChild(divTitle);

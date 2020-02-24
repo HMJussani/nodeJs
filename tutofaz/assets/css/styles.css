@@ -1,14 +1,20 @@
-body {}
-
+body {
+    
+}
+#roteiro{
+   height: 200px;
+   width:  100%;
+}
 .title {
     text-align: center;
 }
 
 .bodyTuto {
-    height: 300px;
-    width: 650px;
-    background-color: aqua;
+    height: 500px;
+    width: 850px;
     text-align: center;
+    border-style: solid;
+    border-width: 1px;
 }
 
 .injetada {
@@ -29,8 +35,9 @@ body {}
     margin-bottom: 10px;
     width: 650px;
     height: 150px;
-    background-color: yellowgreen;
     text-align: center;
+    border-style: solid;
+    border-width: 1px;
 }
 
 input {
@@ -38,9 +45,8 @@ input {
     margin-left: 5px;
 }
 
-button {
-    margin-top: 10px;
-    margin-left: 20px;
+.btn {
+    margin-left:30px;
     margin-bottom: 10px;
     width: 150px;
     height: 30px;
