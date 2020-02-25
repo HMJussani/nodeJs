@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="imagem/png" href="../assets/img/edit.png" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/styles.css">
+    <link type="text/css" rel="stylesheet" href="../assets/css/materialize.min.css" media="screen,projection" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faz Tuto</title>
+
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">Cria Tuto`s</a>
+            <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="index.html">Voltar</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+        <div class="bodyTuto">
+            <div class="row">
+                <div class="input-field col s12 m8 ">
+                    <input placeholder="Título" id="title" type="text" class="validate">
+                </div>
+                <div class="row">
+                    <div class="input-field col s8 ">
+                        <input placeholder="Etapa" id="subtitle" type="text" class="validate">
+
+                    </div>
+                    <div class="input-field col s2 ">
+
+                        <input placeholder="Índice" id="interacao" type="number" min="1" class="validate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea placeholder="Roteiro:" id="roteiro"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <button class="btn" onclick="updateHtml()">Alterar</button>
+                   
+                </div>
+            </div>
+        </div>
+   
+
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="../assets/js/tuto.js"></script>
+    <script src="../assets/js/update.js"></script>
+    <script src="../assets/js/funcoes.js"></script>
+</body>
+
+</html>
