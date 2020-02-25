@@ -49,6 +49,7 @@ if (firebase.initializeApp(firebaseConfig)) {
         }
         if (false === existe) {
             alert(`${title} não existe no banco de dados.`);
+            window.location.reload();
         }
 
     }
@@ -67,6 +68,7 @@ function criarDivs(data) {
     for (var i = 0; i < data.length - 1; i++) {
         var corpo = document.body;
         var div = document.createElement('div');
+        var p = document.createElement('p');
         if (i === 0) {
             var divTitle = document.createElement('div');
             divTitle.className = 'title';
@@ -76,12 +78,12 @@ function criarDivs(data) {
         }
         div.className = 'injetada';
         div.id = 'injetada';
-        div.appendChild(document.createTextNode(data[i].interacao));
-        div.appendChild(document.createTextNode("-"));
-        div.appendChild(document.createTextNode(data[i].subtitle));
-        div.appendChild(document.createTextNode(":"));
+        p.appendChild(document.createTextNode(data[i].subtitle));
+        div.appendChild(p);
+        corpo.appendChild(div);
         div.appendChild(document.createTextNode(data[i].roteiro));
         corpo.appendChild(div);
+        
     }
 
 }

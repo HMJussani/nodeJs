@@ -54,7 +54,6 @@ function novoPasso() {
     injetarDiv(newTuto.interacao);
     criaDivs(newTuto.interacao);
     salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
-    // lerBanco(newTuto.newTitle); 
     newTuto.interacao++;
 }
 
@@ -69,18 +68,18 @@ function apagaHtml() {
     apagaTuto(document.querySelector("#salvoTitle").value);
 }
 
-function editaHtml() {    
+function editaHtml() {
     window.location.replace("update.html");
 }
 
-function updateHtml() {   
+function updateHtml() {
     getDadosUp();
-    updateTuto(newTuto.newTitle, newTuto.newSubtitle,newTuto.newRoteiro, newTuto.interacao);
+    updateTuto(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
 }
 
-function removeHtml() {   
+function removeHtml() {
     getDadosUp();
-    removeEtapa(newTuto.newSubtitle,newTuto.newRoteiro, newTuto.interacao);
+    removeEtapa(newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
 }
 
 function getPasso(interacao) {

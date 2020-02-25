@@ -22,34 +22,35 @@
             </ul>
         </div>
     </nav>
-    <div class="bodyTuto">
-        <div class="row">
-            <div class="input-field col s12">
-                <input placeholder="Título" id="title" type="text" class="validate">
-            </div>
+    
+        <div class="bodyTuto">
             <div class="row">
-                <div class="input-field col s8">
-                    <input placeholder="Etapa" id="subtitle" type="text" class="validate">
-                                 
+                <div class="input-field col s12 m8 ">
+                    <input placeholder="Título" id="title" type="text" class="validate">
                 </div>
-                <div class="input-field col s2">
-                   
-                    <input placeholder="Índice" id="interacao" type="number" min="1" class="validate">                  
-                </div>
-            </div>
-            <div class="row" >
-                <div class="input-field col s12">
-                    <textarea placeholder="Roteiro:" id="roteiro"></textarea>
-                </div>
-            </div>
+                <div class="row">
+                    <div class="input-field col s8 ">
+                        <input placeholder="Etapa" id="subtitle" type="text" class="validate">
 
-            <div class="row">
-                <button class="btn" onclick="updateHtml()">Alterar</button>
-                <button class="btn" onclick="removeHtml()">Remover</button>
+                    </div>
+                    <div class="input-field col s2 ">
+
+                        <input placeholder="Índice" id="interacao" type="number" min="1" class="validate">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea placeholder="Roteiro:" id="roteiro"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <button class="btn" onclick="updateHtml()">Alterar</button>
+                    <button class="btn" onclick="removeHtml()">Remover</button>
+                </div>
             </div>
         </div>
-       
-    </div>
+   
 
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
