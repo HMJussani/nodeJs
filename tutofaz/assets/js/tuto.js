@@ -50,18 +50,38 @@ function injetarDiv(interacao) {
 }
 
 function novoPasso() {
-    getDados();
-    injetarDiv(newTuto.interacao);
-    criaDivs(newTuto.interacao);
-    salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
-    newTuto.interacao++;
+    document.querySelector("#subtitle").value = "";
+    document.querySelector("#roteiro").value = "";
+   // getDados();
+   // injetarDiv(newTuto.interacao);
+   // criaDivs(newTuto.interacao);
+   // newTuto.interacao++;
+}
+
+function message(message) {
+    document.getElementById("title").style.background = 'Yellow';
+    alert(message);
+    return;
+}
+
+function proximo() {
+    var title = document.getElementById("title").value;
+    if (title.length ?
+        novoPasso()
+        : message("Está faltando o título..."));
 }
 
 function lerHtml() {
     lerBanco(document.querySelector("#salvoTitle").value);
 }
+
 function salvaHtml() {
-    lerBanco(document.querySelector("#salvoTitle").value);
+    getDados();
+    var title = document.getElementById("title").value;
+    if (title.length ?
+        salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao+1)
+        : message("Oque vc gostaria de salvar?"));
+
 }
 
 function novoHtml() {

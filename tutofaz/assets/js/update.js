@@ -17,7 +17,14 @@ if (firebase.initializeApp(firebaseConfig)) {
     });
 
     function updateTuto(title, subtitle, roteiro, interacao) {
+        var title = document.getElementById("title").value;
+        if (title.length == 0) {
+            document.getElementById("title").style.background = 'Yellow';
+            alert("Oque vc gostaria de editar?");
+            return;
+        }
         firebase.database().ref(`Tutoriais/${title}/${interacao}`).set({
+            title,
             interacao,
             subtitle,
             roteiro
@@ -66,5 +73,5 @@ function setDadosUp(data) {
 function getSubTitle(indice, data) {
     document.querySelector("#subtitle").value = data[indice - 1].subtitle;
     document.querySelector("#roteiro").value = data[indice - 1].roteiro;
-    
+
 }
