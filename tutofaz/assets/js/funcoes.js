@@ -1,10 +1,10 @@
- function limparDiv() {
+function limparDiv() {
     if (document.querySelector('.title') != null) {
         var qtde = document.querySelectorAll('.title');
         for (var i = 0; i < qtde.length; i++) {
             if (document.querySelector('.title') != null) document.getElementById(`title${i}`).innerHTML = "";
         }
-        
+
     }
 
     if (document.querySelector('.injetada') != null) {
@@ -18,7 +18,7 @@
 }
 
 function criarDivs(data) {
-   
+
     for (var i = 0; i < data.length - 1; i++) {
         var corpo = document.body;
         var div = document.createElement('div');
@@ -60,6 +60,15 @@ function criarLinks(data) {
         div.appendChild(a);
         document.body.appendChild(div);
     }
+
+}
+
+function acertaArray(array) {
+    var arrayCerto = [];
+    for (var i = 0; i < array.length; i++) {
+        arrayCerto[i + 1] = array[i];
+    }
+    return arrayCerto;
 
 }
 

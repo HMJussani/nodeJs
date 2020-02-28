@@ -60,12 +60,26 @@ function novoPasso() {
 function lerHtml() {
     lerBanco(document.querySelector("#salvoTitle").value);
 }
+function salvaHtml() {
+    lerBanco(document.querySelector("#salvoTitle").value);
+}
+
 function novoHtml() {
     window.location.replace("novo.html");
 }
 
 function apagaHtml() {
-    apagaTuto(document.querySelector("#salvoTitle").value);
+    var title = document.getElementById("salvoTitle").value;
+    if (title.length == 0) {
+        document.getElementById("salvoTitle").style.background = 'Yellow';
+        alert("Oque vc gostaria de excluir?");
+        return;
+    }
+    document.getElementById("salvoTitle").style.background = 'white';
+    if (confirm(`${title} será apagado...`)) {
+        apagaTuto(title);
+    }
+
 }
 
 function editaHtml() {

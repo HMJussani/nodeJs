@@ -56,7 +56,7 @@ if (firebase.initializeApp(firebaseConfig)) {
 }
 
 function setDadosUp(data) {
-    document.querySelector("#title").value = data[1].title;
+    document.querySelector("#title").value = data[0].title;
     document.querySelector("#interacao").value = 1;
     document.querySelector("#subtitle").value = data[0].subtitle;
     document.querySelector("#roteiro").value = data[0].roteiro;

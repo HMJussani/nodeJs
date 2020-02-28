@@ -32,7 +32,7 @@ if (firebase.initializeApp(firebaseConfig)) {
             });
             limparDiv();
             criarDivs(data);
-            document.querySelector("#salvoTitle").value = data[1].title;
+            document.querySelector("#salvoTitle").value = data[0].title;
         }
         if (false === existe) {
             alert(`${title} não existe no banco de dados.`);
