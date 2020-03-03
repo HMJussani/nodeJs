@@ -39,7 +39,7 @@ if (firebase.initializeApp(firebaseConfig)) {
         }
 
     }
-
+    
     function apagaTuto(title) {
         var existe = dbExiste(title);
         if (existe) {
@@ -54,14 +54,6 @@ if (firebase.initializeApp(firebaseConfig)) {
             window.location.reload();
         }
 
-    }
-
-    function dbExiste(title) {
-        var existe = false;
-        firebase.database().ref(`Tutoriais`).child(title).on('value', function (snapshot) {
-            existe = snapshot.exists();
-        });
-        return existe;
     }
 
 }

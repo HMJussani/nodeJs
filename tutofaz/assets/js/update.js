@@ -18,18 +18,19 @@ if (firebase.initializeApp(firebaseConfig)) {
 
     function updateTuto(title, subtitle, roteiro, interacao) {
         var title = document.getElementById("title").value;
+        var sucesso = false;
         if (title.length == 0) {
             document.getElementById("title").style.background = 'Yellow';
             alert("Oque vc gostaria de editar?");
             return;
         }
-        firebase.database().ref(`Tutoriais/${title}/${interacao}`).set({
+        sucesso = firebase.database().ref(`Tutoriais/${title}/${interacao}`).set({
             title,
             interacao,
             subtitle,
             roteiro
         });
-        window.location.reload();
+        return sucesso;
     }
 
     function lerBanco(title) {

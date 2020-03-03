@@ -49,26 +49,10 @@ function injetarDiv(interacao) {
 
 }
 
-function novoPasso() {
-    document.querySelector("#subtitle").value = "";
-    document.querySelector("#roteiro").value = "";
-   // getDados();
-   // injetarDiv(newTuto.interacao);
-   // criaDivs(newTuto.interacao);
-   // newTuto.interacao++;
-}
-
 function message(message) {
     document.getElementById("title").style.background = 'Yellow';
     alert(message);
     return;
-}
-
-function proximo() {
-    var title = document.getElementById("title").value;
-    if (title.length ?
-        novoPasso()
-        : message("Está faltando o título..."));
 }
 
 function lerHtml() {
@@ -76,10 +60,15 @@ function lerHtml() {
 }
 
 function salvaHtml() {
-    getDados();
     var title = document.getElementById("title").value;
+    if (dbExiste(title)) { 
+        getDados();     
+        salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, lerBanco(title)[0].interacao + 1);
+        return;
+    }
+    getDados();
     if (title.length ?
-        salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao+1)
+        salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao + 1)
         : message("Oque vc gostaria de salvar?"));
 
 }
@@ -108,7 +97,13 @@ function editaHtml() {
 
 function updateHtml() {
     getDadosUp();
-    updateTuto(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
+    if (updateTuto(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao)) {
+        alert(`Etapa ${newTuto.newSubtitle} salvo com sucesso!`);
+        document.querySelector("#subtitle").value = "";
+        document.querySelector("#roteiro").value = "";
+
+    }
+
 }
 
 function removeHtml() {

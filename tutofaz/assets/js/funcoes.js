@@ -72,5 +72,26 @@ function acertaArray(array) {
 
 }
 
+function dbExiste(title) {
+    var existe = false;
+    firebase.database().ref(`Tutoriais`).child(title).on('value', function (snapshot) {
+        existe = snapshot.exists();
+    });
+    return existe;
+}
 
+function lerBanco(title) {    
+               var data = [];
+        firebase.database().ref(`Tutoriais`).child(title).on('value', function (snapshot) {
+            var readings = snapshot.val();
+            if (readings) {
+                var currentValue;
+                for (var key in readings) {
+                    currentValue = readings[key]
+                    data.push(currentValue);
+                }
+            }
+        });       
+    return data;
+}
 
