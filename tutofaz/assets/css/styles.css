@@ -47,11 +47,6 @@ body {
     height: 150px;
 }
 
-.input-field.col.s1 {
-    width: 50px !important;
-    text-align: left;
-}
-
 input {
     margin-top: 10px;
     margin-left: 5px;

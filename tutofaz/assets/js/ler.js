@@ -13,7 +13,6 @@ if (firebase.initializeApp(firebaseConfig)) {
             }
             criarLinks(data);
         }
-
     });
 
     function lerBanco(title) {
@@ -24,7 +23,6 @@ if (firebase.initializeApp(firebaseConfig)) {
         limparDiv();
         criarDivs(getData(title));
         document.querySelector("#title").value = title;
-
     }
 
     function apagaTuto(title) {
@@ -40,9 +38,7 @@ if (firebase.initializeApp(firebaseConfig)) {
             alert(`${title} não existe no banco de dados.`);
             window.location.reload();
         }
-
     }
-
 }
 
 

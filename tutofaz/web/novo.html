@@ -16,24 +16,26 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="index.html" class="brand-logo center">Cria Tuto`s</a> 
+            <a href="index.html" class="brand-logo center">Cria Tuto`s</a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li><a href="index.html">Voltar</a></li>
             </ul>
         </div>
     </nav>
-    <div class="bodyTuto">
-        <div class="row">
-            <div class="input-field col s12">
-                <input placeholder="Título" id= "title" type="text" class="validate">
+    <div class="container">
+        <div class="bodyTuto">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input placeholder="Título" id="title" type="text" class="validate">
+                </div>
+                <div class="input-field col s12">
+                    <input placeholder="Etapa" id="subtitle" type="text" class="validate">
+                </div>
+                <div class="input-field col s12">
+                    <textarea placeholder="Roteiro:" id="roteiro"></textarea>
+                </div>
+                <button class="btn" onclick="salvaHtml()">Salvar</button>
             </div>
-            <div class="input-field col s12">
-                <input placeholder="Etapa" id= "subtitle" type="text" class="validate">
-            </div>  
-            <div class="input-field col s12">
-                <textarea placeholder="Roteiro:" id="roteiro"></textarea>
-              </div>            
-            <button class="btn" onclick="salvaHtml()">Salvar</button>
         </div>
     </div>
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>

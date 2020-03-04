@@ -1,7 +1,7 @@
 var conta = 0;
 
 if (firebase.initializeApp(firebaseConfig)) {
-
+   
     firebase.database().ref(`Tutoriais`).on(`value`, function (snapshot) {
         var data = [];
         var readings = snapshot.val();
@@ -11,9 +11,9 @@ if (firebase.initializeApp(firebaseConfig)) {
                 currentValue = readings[key]
                 data.push(currentValue);
             }
-           criarLinks(data);
+           // criarLinks(data);
         }
-
+        carregaHtml();
     });
 
     function updateTuto(title, subtitle, roteiro, interacao) {
@@ -61,7 +61,6 @@ if (firebase.initializeApp(firebaseConfig)) {
             window.location.reload();
         });
     }
-
 }
 
 function setDadosUp(data) {
@@ -69,11 +68,14 @@ function setDadosUp(data) {
     document.querySelector("#interacao").value = 1;
     document.querySelector("#subtitle").value = data[0].subtitle;
     document.querySelector("#roteiro").value = data[0].roteiro;
-
 }
 
 function getSubTitle(indice, data) {
     document.querySelector("#subtitle").value = data[indice - 1].subtitle;
     document.querySelector("#roteiro").value = data[indice - 1].roteiro;
+}
 
+function carregaHtml() {
+    var url = window.location.href.split('=');   
+    lerBanco(decodeURI(url[1]));     
 }

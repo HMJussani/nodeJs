@@ -83,7 +83,7 @@ function novoHtml() {
     document.getElementById("title").style.background = 'white';
    
     if (dbExiste(title)) {
-        window.location.replace("update.html");
+        window.location.replace(`update.html?=${title}`);
         return;
     }
     window.location.replace("novo.html");
@@ -100,7 +100,6 @@ function apagaHtml() {
     if (confirm(`${title} será apagado...`)) {
         apagaTuto(title);
     }
-
 }
 
 function editaHtml() {
@@ -112,7 +111,7 @@ function editaHtml() {
     }
     document.getElementById("title").style.background = 'white';
     if (dbExiste(title)) {
-        window.location.replace("update.html");
+        window.location.replace(`update.html?=${title}`);
         return;
     }
     window.location.replace("novo.html");
@@ -125,9 +124,7 @@ function updateHtml() {
         document.querySelector("#subtitle").value = "";
         document.querySelector("#roteiro").value = "";
         document.querySelector("#fim").value = newTuto.interacao;
-
     }
-
 }
 
 function removeHtml() {
