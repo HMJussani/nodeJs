@@ -17,29 +17,16 @@ if (firebase.initializeApp(firebaseConfig)) {
     });
 
     function lerBanco(title) {
-        var existe = dbExiste(title)
-        if (existe) {
-            var data = [];
-            firebase.database().ref(`Tutoriais`).child(title).on('value', function (snapshot) {
-                var readings = snapshot.val();
-                if (readings) {
-                    var currentValue;
-                    for (var key in readings) {
-                        currentValue = readings[key]
-                        data.push(currentValue);
-                    }
-                }
-            });
-            limparDiv();
-            criarDivs(data);
-            document.querySelector("#salvoTitle").value = data[0].title;
-        }
-        if (false === existe) {
+        if (false === dbExiste(title)) {
             alert(`${title} não existe no banco de dados.`);
+            return;
         }
+        limparDiv();
+        criarDivs(getData(title));
+        document.querySelector("#title").value = title;
 
     }
-    
+
     function apagaTuto(title) {
         var existe = dbExiste(title);
         if (existe) {

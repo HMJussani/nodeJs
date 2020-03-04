@@ -56,14 +56,14 @@ function message(message) {
 }
 
 function lerHtml() {
-    lerBanco(document.querySelector("#salvoTitle").value);
+    lerBanco(document.querySelector("#title").value);
 }
 
 function salvaHtml() {
     var title = document.getElementById("title").value;
-    if (dbExiste(title)) { 
-        getDados();     
-        salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, lerBanco(title)[0].interacao + 1);
+    if (dbExiste(title)) {
+        getDados();
+        salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newLerBanco(title)[0].interacao + 1);
         return;
     }
     getDados();
@@ -74,17 +74,29 @@ function salvaHtml() {
 }
 
 function novoHtml() {
+    var title = document.getElementById("title").value;
+    if (title.length == 0) {
+        document.getElementById("title").style.background = 'Yellow';
+        alert("Campo obrigatório");
+        return;
+    }
+    document.getElementById("title").style.background = 'white';
+   
+    if (dbExiste(title)) {
+        window.location.replace("update.html");
+        return;
+    }
     window.location.replace("novo.html");
 }
 
 function apagaHtml() {
-    var title = document.getElementById("salvoTitle").value;
+    var title = document.getElementById("title").value;
     if (title.length == 0) {
-        document.getElementById("salvoTitle").style.background = 'Yellow';
+        document.getElementById("title").style.background = 'Yellow';
         alert("Oque vc gostaria de excluir?");
         return;
     }
-    document.getElementById("salvoTitle").style.background = 'white';
+    document.getElementById("title").style.background = 'white';
     if (confirm(`${title} será apagado...`)) {
         apagaTuto(title);
     }
@@ -92,7 +104,18 @@ function apagaHtml() {
 }
 
 function editaHtml() {
-    window.location.replace("update.html");
+    var title = document.getElementById("title").value;
+    if (title.length == 0) {
+        document.getElementById("title").style.background = 'Yellow';
+        alert("Campo obrigatório");
+        return;
+    }
+    document.getElementById("title").style.background = 'white';
+    if (dbExiste(title)) {
+        window.location.replace("update.html");
+        return;
+    }
+    window.location.replace("novo.html");
 }
 
 function updateHtml() {
@@ -101,6 +124,7 @@ function updateHtml() {
         alert(`Etapa ${newTuto.newSubtitle} salvo com sucesso!`);
         document.querySelector("#subtitle").value = "";
         document.querySelector("#roteiro").value = "";
+        document.querySelector("#fim").value = newTuto.interacao;
 
     }
 

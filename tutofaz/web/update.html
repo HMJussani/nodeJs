@@ -16,41 +16,42 @@
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="index.html" class="brand-logo center">Cria Tuto`s</a> 
+            <a href="index.html" class="brand-logo center">Cria Tuto`s</a>
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li><a href="index.html">Voltar</a></li>
             </ul>
         </div>
     </nav>
-    
-        <div class="bodyTuto">
-            <div class="row">
-                <div class="input-field col s12 m8 ">
-                    <input placeholder="Título" id="title" type="text" class="validate">
-                </div>
-                <div class="row">
-                    <div class="input-field col s8 ">
-                        <input placeholder="Etapa" id="subtitle" type="text" class="validate">
 
-                    </div>
-                    <div class="input-field col s2 ">
-
-                        <input placeholder="Índice" id="interacao" type="number" min="1" class="validate">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <textarea placeholder="Roteiro:" id="roteiro"></textarea>
-                    </div>
-                </div>
-
-                <div class="row">                   
-                    <button class="btn" onclick="proximoHtml()">Incluir Etapa</button>
-                    <button class="btn" onclick="updateHtml()">Salvar</button>                   
-                </div>
+    <div class="bodyTuto">
+        <div class="row">
+            <div class="input-field col s12 m12 ">
+                <input placeholder="Título" id="title" type="text" class="validate">
             </div>
         </div>
-   
+        <div class="row">
+            <div class="input-field col s1 ">
+                <input placeholder="Índice" id="interacao" type="number" min="1" class="num">
+            </div>
+            <div class="input-field col s9 ">
+                <input placeholder="Etapa" id="subtitle" type="text" class="validate">
+            </div>
+            <div class="input-field col s1 " >
+                <input placeholder="Fim" id="fim" type="text" class="num">
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea placeholder="Roteiro:" id="roteiro"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12 ">
+                <button class="btn" onclick="updateHtml()">Incluir Etapa</button>
+            </div>
+        </div>
+    </div>
+
 
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>

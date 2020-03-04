@@ -51,9 +51,9 @@ function criarDivs(data) {
 function criarLinks(data) {
     for (var i = 0; i < data.length; i++) {
         var a = document.createElement('a');
-        var div = document.createElement('div');
+        var div = document.createElement('p');
         a.className = 'titulos';
-        div.className = 'row';
+        div.className = 'linha';
         a.id = data[i].title;
         a.setAttribute('href', `javascript:lerBanco("${data[i].title}")`);
         a.appendChild(document.createTextNode(data[i].title));
@@ -80,18 +80,18 @@ function dbExiste(title) {
     return existe;
 }
 
-function lerBanco(title) {    
-               var data = [];
-        firebase.database().ref(`Tutoriais`).child(title).on('value', function (snapshot) {
-            var readings = snapshot.val();
-            if (readings) {
-                var currentValue;
-                for (var key in readings) {
-                    currentValue = readings[key]
-                    data.push(currentValue);
-                }
+function getData(title) {
+    var data = [];
+    firebase.database().ref(`Tutoriais`).child(title).on('value', function (snapshot) {
+        var readings = snapshot.val();
+        if (readings) {
+            var currentValue;
+            for (var key in readings) {
+                currentValue = readings[key]
+                data.push(currentValue);
             }
-        });       
+        }
+    });
     return data;
 }
 

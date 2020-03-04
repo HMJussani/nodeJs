@@ -11,7 +11,7 @@ if (firebase.initializeApp(firebaseConfig)) {
                 currentValue = readings[key]
                 data.push(currentValue);
             }
-            criarLinks(data);
+           criarLinks(data);
         }
 
     });
@@ -51,6 +51,7 @@ if (firebase.initializeApp(firebaseConfig)) {
         $('#interacao').bind('click keyup', function () {
             getSubTitle($('#interacao').val(), data);
         });
+        document.querySelector("#fim").value = data.length - 1;
     }
 
     function removeEtapa(subtitle, roteiro, interacao) {

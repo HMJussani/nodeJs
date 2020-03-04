@@ -17,6 +17,7 @@ body {
     width: 850px;
     text-align: center;
     border-bottom: 10px;
+    margin-left: 80px;
 }
 
 .injetada {
@@ -30,8 +31,13 @@ body {
 }
 
 .titulos {
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 30px;
+}
+
+.linha {
+    margin-top: 5px;
+    width: 150px;
 }
 
 .bancoTuto {
@@ -39,6 +45,11 @@ body {
     margin-bottom: 10px;
     width: 650px;
     height: 150px;
+}
+
+.input-field.col.s1 {
+    width: 50px !important;
+    text-align: left;
 }
 
 input {
