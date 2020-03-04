@@ -8,7 +8,7 @@ if (firebase.initializeApp(firebaseConfig)) {
         if (readings) {
             var currentValue;
             for (var key in readings) {
-                currentValue = readings[key]
+                currentValue = readings[key];
                 data.push(currentValue);
             }
             criarLinks(data);
