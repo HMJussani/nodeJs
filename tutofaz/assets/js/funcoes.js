@@ -1,10 +1,10 @@
- function limparDiv() {
+function limparDiv() {
     if (document.querySelector('.title') != null) {
         var qtde = document.querySelectorAll('.title');
         for (var i = 0; i < qtde.length; i++) {
             if (document.querySelector('.title') != null) document.getElementById(`title${i}`).innerHTML = "";
         }
-        
+
     }
 
     if (document.querySelector('.injetada') != null) {
@@ -18,7 +18,7 @@
 }
 
 function criarDivs(data) {
-   
+
     for (var i = 0; i < data.length - 1; i++) {
         var corpo = document.body;
         var div = document.createElement('div');
@@ -51,9 +51,9 @@ function criarDivs(data) {
 function criarLinks(data) {
     for (var i = 0; i < data.length; i++) {
         var a = document.createElement('a');
-        var div = document.createElement('div');
+        var div = document.createElement('p');
         a.className = 'titulos';
-        div.className = 'row';
+        div.className = 'linha';
         a.id = data[i].title;
         a.setAttribute('href', `javascript:lerBanco("${data[i].title}")`);
         a.appendChild(document.createTextNode(data[i].title));
@@ -63,4 +63,35 @@ function criarLinks(data) {
 
 }
 
+function acertaArray(array) {
+    var arrayCerto = [];
+    for (var i = 0; i < array.length; i++) {
+        arrayCerto[i + 1] = array[i];
+    }
+    return arrayCerto;
+
+}
+
+function dbExiste(title) {
+    var existe = false;
+    firebase.database().ref(`Tutoriais`).child(title).on('value', function (snapshot) {
+        existe = snapshot.exists();
+    });
+    return existe;
+}
+
+function getData(title) {
+    var data = [];
+    firebase.database().ref(`Tutoriais`).child(title).on('value', function (snapshot) {
+        var readings = snapshot.val();
+        if (readings) {
+            var currentValue;
+            for (var key in readings) {
+                currentValue = readings[key]
+                data.push(currentValue);
+            }
+        }
+    });
+    return data;
+}
 

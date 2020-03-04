@@ -49,32 +49,85 @@ function injetarDiv(interacao) {
 
 }
 
-function novoPasso() {
-    getDados();
-    injetarDiv(newTuto.interacao);
-    criaDivs(newTuto.interacao);
-    salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
-    newTuto.interacao++;
+function message(message) {
+    document.getElementById("title").style.background = 'Yellow';
+    alert(message);
+    return;
 }
 
 function lerHtml() {
-    lerBanco(document.querySelector("#salvoTitle").value);
+    lerBanco(document.querySelector("#title").value);
 }
+
+function salvaHtml() {
+    var title = document.getElementById("title").value;
+    if (dbExiste(title)) {
+        getDados();
+        salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newLerBanco(title)[0].interacao + 1);
+        return;
+    }
+    getDados();
+    if (title.length ?
+        salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao + 1)
+        : message("Oque vc gostaria de salvar?"));
+
+}
+
 function novoHtml() {
+    var title = document.getElementById("title").value;
+    if (title.length == 0) {
+        document.getElementById("title").style.background = 'Yellow';
+        alert("Campo obrigatório");
+        return;
+    }
+    document.getElementById("title").style.background = 'white';
+   
+    if (dbExiste(title)) {
+        window.location.replace("update.html");
+        return;
+    }
     window.location.replace("novo.html");
 }
 
 function apagaHtml() {
-    apagaTuto(document.querySelector("#salvoTitle").value);
+    var title = document.getElementById("title").value;
+    if (title.length == 0) {
+        document.getElementById("title").style.background = 'Yellow';
+        alert("Oque vc gostaria de excluir?");
+        return;
+    }
+    document.getElementById("title").style.background = 'white';
+    if (confirm(`${title} será apagado...`)) {
+        apagaTuto(title);
+    }
+
 }
 
 function editaHtml() {
-    window.location.replace("update.html");
+    var title = document.getElementById("title").value;
+    if (title.length == 0) {
+        document.getElementById("title").style.background = 'Yellow';
+        alert("Campo obrigatório");
+        return;
+    }
+    document.getElementById("title").style.background = 'white';
+    if (dbExiste(title)) {
+        window.location.replace("update.html");
+        return;
+    }
+    window.location.replace("novo.html");
 }
 
 function updateHtml() {
     getDadosUp();
-    updateTuto(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
+    if (updateTuto(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao)) {
+        alert(`Etapa ${newTuto.newSubtitle} salvo com sucesso!`);
+        document.querySelector("#subtitle").value = "";
+        document.querySelector("#roteiro").value = "";
+        document.querySelector("#fim").value = newTuto.interacao;
+
+    }
+
 }
 
 function removeHtml() {

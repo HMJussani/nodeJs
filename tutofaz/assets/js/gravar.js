@@ -1,7 +1,15 @@
 if (firebase.initializeApp(firebaseConfig)) {
 
+    firebase.database().ref(`Tutoriais`).on(`value`, function (snapshot) {
+        var readings = snapshot.val();
+
+    });
+
+
     function salvarBanco(title, subtitle, roteiro, interacao) {
-          firebase.database().ref(`Tutoriais/${title}/${interacao}`).set({
+        var existe = dbExiste(title);
+        if (!existe) {
+            firebase.database().ref(`Tutoriais/${title}/${interacao}`).set({
                 title,
                 interacao,
                 subtitle,
@@ -11,15 +19,8 @@ if (firebase.initializeApp(firebaseConfig)) {
             firebase.database().ref(`Tutoriais/${title}/`).update({
                 title
             });
-
-    }
-   
-    function dbExiste(title) {
-        var existe;
-        firebase.database().ref(`Tutoriais`).child(title).on('value', function (snapshot) {
-            existe = snapshot.exists();
-        });
-        return existe;
+            alert(`${title} salvo com sucesso!`);
+        }
     }
 
 }
