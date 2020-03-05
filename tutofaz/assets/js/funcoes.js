@@ -1,3 +1,4 @@
+var conta = 0;
 function limparDiv() {
     if (document.querySelector('.title') != null) {
         var qtde = document.querySelectorAll('.title');
@@ -78,3 +79,7 @@ function getData(title) {
     return data;
 }
 
+function carregaHtml() {
+    var url = window.location.href.split('=');   
+    lerBanco(decodeURI(url[1]));     
+}

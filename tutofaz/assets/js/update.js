@@ -1,18 +1,7 @@
-var conta = 0;
-
 if (firebase.initializeApp(firebaseConfig)) {
    
-    firebase.database().ref(`Tutoriais`).on(`value`, function (snapshot) {
-        var data = [];
+    firebase.database().ref(`Tutoriais`).on(`value`, function (snapshot) {       
         var readings = snapshot.val();
-        if (readings) {
-            var currentValue;
-            for (var key in readings) {
-                currentValue = readings[key]
-                data.push(currentValue);
-            }
-           // criarLinks(data);
-        }
         carregaHtml();
     });
 
@@ -54,8 +43,8 @@ if (firebase.initializeApp(firebaseConfig)) {
         document.querySelector("#fim").value = data.length - 1;
     }
 
-    function removeEtapa(subtitle, roteiro, interacao) {
-        var aRemover = firebase.database().ref(`Tutoriais/${title}/`);
+    function removeEtapa(title, interacao) {
+        var aRemover = firebase.database().ref(`Tutoriais/${title}/${interacao}`);
         aRemover.remove(function (error) {
             alert(`${title} removido do banco de dados.`);
             window.location.reload();
@@ -75,7 +64,4 @@ function getSubTitle(indice, data) {
     document.querySelector("#roteiro").value = data[indice - 1].roteiro;
 }
 
-function carregaHtml() {
-    var url = window.location.href.split('=');   
-    lerBanco(decodeURI(url[1]));     
-}
+
