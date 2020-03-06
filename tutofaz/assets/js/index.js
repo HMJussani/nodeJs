@@ -40,21 +40,21 @@ function salvaHtml() {
     var title = document.getElementById("title").value;
     if (dbExiste(title)) {
         getDados();
-        var fim = getData(document.querySelector("#title").value);        
-        salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro,fim.length); 
-        limparDiv();      
-        criarDivs(getData(title));    
+        var fim = getData(document.querySelector("#title").value);
+        salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, fim.length);
+        limparDiv();
+        criarDivs(getData(title));
         document.querySelector("#subtitle").value = "";
         document.querySelector("#roteiro").value = "";
         return;
     }
     getDados();
-    if (title.length===0){
-        message("Oque vc gostaria de salvar?");
+    if (title.length === 0) {
+        message("Erro: Campo obrigatório vazio.");
         return;
     }
-    salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro,newTuto.interacao); 
-    limparDiv();   
+    salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
+    limparDiv();
     criarDivs(getData(title));
     document.querySelector("#subtitle").value = "";
     document.querySelector("#roteiro").value = "";
@@ -62,13 +62,12 @@ function salvaHtml() {
 
 function novoHtml() {
     var title = document.getElementById("title").value;
-    if (title.length == 0) {
-        document.getElementById("title").style.background = 'Yellow';
-        alert("Campo obrigatório");
+    if (title.length === 0) {
+        message("Erro: Campo obrigatório vazio.");
         return;
     }
     document.getElementById("title").style.background = 'white';
-   
+
     if (dbExiste(title)) {
         window.location.replace(`update.html?=${title}`);
         return;
@@ -78,22 +77,33 @@ function novoHtml() {
 
 function apagaHtml() {
     var title = document.getElementById("title").value;
-    if (title.length == 0) {
-        document.getElementById("title").style.background = 'Yellow';
-        alert("Oque vc gostaria de excluir?");
+    if (title.length === 0) {
+        message("Erro: Campo obrigatório vazio.");
         return;
     }
     document.getElementById("title").style.background = 'white';
+    if (dbExiste(title) === false) {
+        alert(`${title} não existe no banco de dados.`);
+        return;
+    }
     if (confirm(`${title} será apagado...`)) {
         apagaTuto(title);
     }
 }
 
+function leHtml() {
+    var title = document.querySelector('#title').value;
+    if (dbExiste(title) === false) {
+        alert(`${title} não existe no banco de dados.`);
+        return;
+    }
+    window.location.replace(`viewer.html?=${title}`);
+}
+
 function editaHtml() {
     var title = document.getElementById("title").value;
-    if (title.length == 0) {
-        document.getElementById("title").style.background = 'Yellow';
-        alert("Campo obrigatório");
+    if (title.length === 0) {
+        message("Erro: Campo obrigatório vazio.");
         return;
     }
     document.getElementById("title").style.background = 'white';
@@ -116,11 +126,11 @@ function salvaEtapa() {
 
 function incluiEtapa() {
     var fim = getData(document.querySelector("#title").value);
-    var ultima = fim.length-1;
+    var ultima = fim.length - 1;
     document.querySelector("#subtitle").value = "";
     document.querySelector("#roteiro").value = "";
     document.querySelector("#fim").value = ultima;
-    document.querySelector("#interacao").value = fim.length;   
+    document.querySelector("#interacao").value = fim.length;
 }
 
 function removeHtml() {

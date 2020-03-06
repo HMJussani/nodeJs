@@ -49,7 +49,7 @@ function criarLinks(data) {
         a.className = 'titulos';
         div.className = 'linha';
         a.id = data[i].title;
-        a.setAttribute('href', `javascript:lerBanco("${data[i].title}")`);
+        a.setAttribute('href', `javascript:setTitle("${data[i].title}")`);
         a.appendChild(document.createTextNode(data[i].title));
         div.appendChild(a);
         document.body.appendChild(div);
@@ -80,6 +80,10 @@ function getData(title) {
 }
 
 function carregaHtml() {
-    var url = window.location.href.split('=');   
-    lerBanco(decodeURI(url[1]));     
+    var url = window.location.href.split('=');
+    lerBanco(decodeURI(url[1]));
+}
+
+function setTitle(title) {
+    document.querySelector('#title').value = title;
 }

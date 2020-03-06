@@ -10,7 +10,7 @@ if (firebase.initializeApp(firebaseConfig)) {
         var sucesso = false;
         if (title.length == 0) {
             document.getElementById("title").style.background = 'Yellow';
-            alert("Oque vc gostaria de editar?");
+            alert("Erro: campo obrigatório vazio.");
             return;
         }
         sucesso = firebase.database().ref(`Tutoriais/${title}/${interacao}`).set({
