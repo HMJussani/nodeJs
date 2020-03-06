@@ -1,19 +1,8 @@
-var conta = 0;
-
 if (firebase.initializeApp(firebaseConfig)) {
-
-    firebase.database().ref(`Tutoriais`).on(`value`, function (snapshot) {
-        var data = [];
+   
+    firebase.database().ref(`Tutoriais`).on(`value`, function (snapshot) {       
         var readings = snapshot.val();
-        if (readings) {
-            var currentValue;
-            for (var key in readings) {
-                currentValue = readings[key]
-                data.push(currentValue);
-            }
-           criarLinks(data);
-        }
-
+        carregaHtml();
     });
 
     function updateTuto(title, subtitle, roteiro, interacao) {
@@ -21,7 +10,7 @@ if (firebase.initializeApp(firebaseConfig)) {
         var sucesso = false;
         if (title.length == 0) {
             document.getElementById("title").style.background = 'Yellow';
-            alert("Oque vc gostaria de editar?");
+            alert("Erro: campo obrigatório vazio.");
             return;
         }
         sucesso = firebase.database().ref(`Tutoriais/${title}/${interacao}`).set({
@@ -54,14 +43,13 @@ if (firebase.initializeApp(firebaseConfig)) {
         document.querySelector("#fim").value = data.length - 1;
     }
 
-    function removeEtapa(subtitle, roteiro, interacao) {
-        var aRemover = firebase.database().ref(`Tutoriais/${title}/`);
+    function removeEtapa(title, interacao) {
+        var aRemover = firebase.database().ref(`Tutoriais/${title}/${interacao}`);
         aRemover.remove(function (error) {
             alert(`${title} removido do banco de dados.`);
             window.location.reload();
         });
     }
-
 }
 
 function setDadosUp(data) {
@@ -69,11 +57,11 @@ function setDadosUp(data) {
     document.querySelector("#interacao").value = 1;
     document.querySelector("#subtitle").value = data[0].subtitle;
     document.querySelector("#roteiro").value = data[0].roteiro;
-
 }
 
 function getSubTitle(indice, data) {
     document.querySelector("#subtitle").value = data[indice - 1].subtitle;
     document.querySelector("#roteiro").value = data[indice - 1].roteiro;
-
 }
+
+

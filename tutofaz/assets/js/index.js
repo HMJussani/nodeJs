@@ -30,104 +30,107 @@ function getDadosUp() {
 
 }
 
-function criaDivs(interacao) {
-    var novaDiv = "";
-    var htmlDiv = "novaDiv" + interacao;
-    if (interacao === 0) novaDiv = `${novaDiv} <h2> ${newTuto.newTitle}</h2>`;
-    novaDiv = `${novaDiv} <p> ${newTuto.newSubtitle} </p>`;
-    novaDiv = `${novaDiv} <p> ${newTuto.newRoteiro} </p>`;
-    document.getElementById(htmlDiv).innerHTML = novaDiv;
-
-}
-
-function injetarDiv(interacao) {
-    var corpo = document.body;
-    var div = document.createElement("div");
-    div.className = "injetada";
-    div.id = "novaDiv" + interacao;
-    corpo.appendChild(div);
-
-}
-
 function message(message) {
     document.getElementById("title").style.background = 'Yellow';
     alert(message);
     return;
 }
 
-function lerHtml() {
-    lerBanco(document.querySelector("#title").value);
-}
-
 function salvaHtml() {
     var title = document.getElementById("title").value;
     if (dbExiste(title)) {
         getDados();
-        salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newLerBanco(title)[0].interacao + 1);
+        var fim = getData(document.querySelector("#title").value);
+        salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, fim.length);
+        limparDiv();
+        criarDivs(getData(title));
+        document.querySelector("#subtitle").value = "";
+        document.querySelector("#roteiro").value = "";
         return;
     }
     getDados();
-    if (title.length ?
-        salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao + 1)
-        : message("Oque vc gostaria de salvar?"));
-
+    if (title.length === 0) {
+        message("Erro: Campo obrigatório vazio.");
+        return;
+    }
+    salvarBanco(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao);
+    limparDiv();
+    criarDivs(getData(title));
+    document.querySelector("#subtitle").value = "";
+    document.querySelector("#roteiro").value = "";
 }
 
 function novoHtml() {
     var title = document.getElementById("title").value;
-    if (title.length == 0) {
-        document.getElementById("title").style.background = 'Yellow';
-        alert("Campo obrigatório");
+    if (title.length === 0) {
+        message("Erro: Campo obrigatório vazio.");
         return;
     }
     document.getElementById("title").style.background = 'white';
-   
+
     if (dbExiste(title)) {
-        window.location.replace("update.html");
+        window.location.replace(`update.html?=${title}`);
         return;
     }
-    window.location.replace("novo.html");
+    window.location.replace(`novo.html?=${title}`);
 }
 
 function apagaHtml() {
     var title = document.getElementById("title").value;
-    if (title.length == 0) {
-        document.getElementById("title").style.background = 'Yellow';
-        alert("Oque vc gostaria de excluir?");
+    if (title.length === 0) {
+        message("Erro: Campo obrigatório vazio.");
         return;
     }
     document.getElementById("title").style.background = 'white';
+    if (dbExiste(title) === false) {
+        alert(`${title} não existe no banco de dados.`);
+        return;
+    }
     if (confirm(`${title} será apagado...`)) {
         apagaTuto(title);
     }
+}
 
+function leHtml() {
+    var title = document.querySelector('#title').value;
+    if (dbExiste(title) === false) {
+        alert(`${title} não existe no banco de dados.`);
+        return;
+    }
+    window.location.replace(`viewer.html?=${title}`);
 }
 
 function editaHtml() {
     var title = document.getElementById("title").value;
-    if (title.length == 0) {
-        document.getElementById("title").style.background = 'Yellow';
-        alert("Campo obrigatório");
+    if (title.length === 0) {
+        message("Erro: Campo obrigatório vazio.");
         return;
     }
     document.getElementById("title").style.background = 'white';
     if (dbExiste(title)) {
-        window.location.replace("update.html");
+        window.location.replace(`update.html?=${title}`);
         return;
     }
-    window.location.replace("novo.html");
+    window.location.replace(`novo.html?=${title}`);
 }
 
-function updateHtml() {
+function salvaEtapa() {
     getDadosUp();
     if (updateTuto(newTuto.newTitle, newTuto.newSubtitle, newTuto.newRoteiro, newTuto.interacao)) {
         alert(`Etapa ${newTuto.newSubtitle} salvo com sucesso!`);
         document.querySelector("#subtitle").value = "";
         document.querySelector("#roteiro").value = "";
         document.querySelector("#fim").value = newTuto.interacao;
-
     }
+}
 
+function incluiEtapa() {
+    var fim = getData(document.querySelector("#title").value);
+    var ultima = fim.length - 1;
+    document.querySelector("#subtitle").value = "";
+    document.querySelector("#roteiro").value = "";
+    document.querySelector("#fim").value = ultima;
+    document.querySelector("#interacao").value = fim.length;
 }
 
 function removeHtml() {
